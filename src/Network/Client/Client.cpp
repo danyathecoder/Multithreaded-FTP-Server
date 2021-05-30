@@ -89,9 +89,7 @@ void FTPClient::SetUsername(string username) {
         this->authorized = true;
         return;
     }
-//    if (!this->password.empty()) {
-//        this->Authorize();
-//    }
+
     if (this->password != 0) {
         this->Authorize();
     }
