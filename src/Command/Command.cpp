@@ -1,5 +1,5 @@
 #include "Command.h"
-#include "../Logger.h"
+#include "../Logger/Logger.h"
 
 // trim from start (in place)
 static inline void ltrim(std::string &s) {

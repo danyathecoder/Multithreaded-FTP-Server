@@ -10,21 +10,21 @@
 #include <arpa/inet.h>
 #include <sys/ioctl.h>
 
-#include "../Command/Command.h"
-#include "../Exception/AlreadyDeclared.h"
+#include "../../Command/Command.h"
+#include "../../Exception/AlreadyDeclared.h"
 
 using namespace std;
 
 class FTPClient {
     string username = "";
-    string password = "";
+    std::size_t password = 0;
     bool authorized = false;
 
     int socketDesc;
     sockaddr_in client;
 
-    vector<pair<string, string>> users = {
-            { "edelwud", "123" }, {"danyathecoder", "myprotection"}
+    map<string, std::size_t> users = {
+            {"test", 15118982290295364091} //test
     };
 public:
     using Contract = tuple<FTPCommandList, string>;

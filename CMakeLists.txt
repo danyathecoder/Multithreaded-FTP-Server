@@ -6,29 +6,29 @@ project(FTPServer C CXX)
 # add the executable
 add_executable(
     FTPServer src/main.cpp
-    
-    src/Network/Server.h 
-    src/Network/Server.cpp
-    
-    src/Network/Response.cpp 
-    src/Network/Response.h 
-    
-    src/Network/Client.h
-    src/Network/Client.cpp 
+
+        src/Network/Server/Server.h
+        src/Network/Server/Server.cpp
+
+        src/Network/Response/Response.cpp
+        src/Network/Response/Response.h
+
+        src/Network/Client/Client.h
+        src/Network/Client/Client.cpp
     
     src/Network/StatusCodes.h
 
     src/Command/Command.h
     src/Command/Command.cpp
 
-    src/Filesystem/Executor.h
-    src/Filesystem/Executor.cpp
+        src/Executor/Executor.h
+        src/Executor/Executor.cpp
 
-    src/Logger.h
-    src/Logger.cpp
+        src/Logger/Logger.h
+        src/Logger/Logger.cpp
 
-    src/Network/DataChannel.cpp
-    src/Network/DataChannel.h
+        src/Network/DataChannel/DataChannel.cpp
+        src/Network/DataChannel/DataChannel.h
 
     src/Exception/LostConnection.h
     src/Exception/UndefinedCommand.h

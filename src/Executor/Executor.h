@@ -6,8 +6,8 @@
 #include <experimental/filesystem>
 
 #include "../Command/Command.h"
-#include "../Network/Client.h"
-#include "../Network/Server.h"
+#include "../Network/Client/Client.h"
+#include "../Network/Server/Server.h"
 #include "../Network/StatusCodes.h"
 
 using namespace std;

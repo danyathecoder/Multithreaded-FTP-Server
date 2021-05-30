@@ -6,8 +6,8 @@
 #include <ctime>
 #include <iostream>
 
-#include "Server.h"
-#include "Response.h"
+#include "../Server/Server.h"
+#include "../Response/Response.h"
 
 using namespace std;
 //

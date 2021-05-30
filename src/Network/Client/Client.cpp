@@ -35,6 +35,7 @@ string FTPClient::GetClientAddress() {
  * Getting client port
  * @return port string
  */
+
 string FTPClient::GetClientPort() const {
     return to_string(this->client.sin_port);
 }
@@ -43,6 +44,7 @@ string FTPClient::GetClientPort() const {
  * Getting client descriptor
  * @return descriptor
  */
+
 int FTPClient::GetClientDescriptor() const {
     return this->socketDesc;
 }
@@ -51,6 +53,7 @@ int FTPClient::GetClientDescriptor() const {
  * Check current user
  * @return boolean
  */
+
 bool FTPClient::IsAuthorized() const {
     return this->authorized;
 }
@@ -60,6 +63,7 @@ bool FTPClient::IsAuthorized() const {
  * @param username
  * @param password
  */
+
 void FTPClient::Authorize() {
     if (this->authorized) {
         throw AlreadyDeclared();
@@ -70,12 +74,11 @@ void FTPClient::Authorize() {
         return;
     }
 
-    auto user = find(this->users.begin(), this->users.end(), make_pair(username, password));
-    if (user == this->users.end()) {
+    if(users[username] != password){
         throw logic_error("User not found");
     }
-
     this->authorized = true;
+
     return;
 }
 
@@ -86,13 +89,17 @@ void FTPClient::SetUsername(string username) {
         this->authorized = true;
         return;
     }
-    if (!this->password.empty()) {
+//    if (!this->password.empty()) {
+//        this->Authorize();
+//    }
+    if (this->password != 0) {
         this->Authorize();
     }
 }
 
 void FTPClient::SetPassword(string password) {
-    this->password = password;
+    hash<string> hash_shadow;
+    this->password = hash_shadow(password);
     if (!this->username.empty()) {
         this->Authorize();
     }

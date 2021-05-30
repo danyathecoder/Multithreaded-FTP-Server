@@ -8,9 +8,9 @@
 
 #include <unistd.h>
 
-#include "Server.h"
-#include "Client.h"
-#include "StatusCodes.h"
+#include "../Server/Server.h"
+#include "../Client/Client.h"
+#include "../StatusCodes.h"
 
 using namespace std;
 

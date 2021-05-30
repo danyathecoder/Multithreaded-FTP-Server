@@ -24,16 +24,16 @@
 #include <thread>
 #include <future>
 
-#include "Client.h"
-#include "Response.h"
-#include "StatusCodes.h"
-#include "../Logger.h"
-#include "../Command/Command.h"
-#include "../Filesystem/Executor.h"
+#include "../Client/Client.h"
+#include "../Response/Response.h"
+#include "../StatusCodes.h"
+#include "../../Logger/Logger.h"
+#include "../../Command/Command.h"
+#include "../../Executor/Executor.h"
 
-#include "../Exception/NotLogged.h"
-#include "../Exception/NoDataConnection.h"
-#include "../Exception/UndefinedCommand.h"
+#include "../../Exception/NotLogged.h"
+#include "../../Exception/NoDataConnection.h"
+#include "../../Exception/UndefinedCommand.h"
 
 using namespace std;
 
