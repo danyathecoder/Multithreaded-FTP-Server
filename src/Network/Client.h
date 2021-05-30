@@ -24,7 +24,7 @@ class FTPClient {
     sockaddr_in client;
 
     vector<pair<string, string>> users = {
-            { "edelwud", "123" }
+            { "edelwud", "123" }, {"danyathecoder", "myprotection"}
     };
 public:
     using Contract = tuple<FTPCommandList, string>;

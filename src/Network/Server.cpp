@@ -1,4 +1,5 @@
 #include "Server.h"
+#include "../Constants.h"
 
 /**
  * Initialization of FTP server
@@ -100,7 +101,7 @@ FTPClient FTPServer::AcceptMessage(int listenConnDescriptor) {
  */
 void FTPServer::ManageRequest(FTPClient &request) {
     auto logger = Logger::SetPrefix(request.GetClientAddress() + ":" + request.GetClientPort());
-    string currentDir = "/home/user";
+    string currentDir = HOME_DIRECTORY;
 
     FTPResponse response(request);
     Executor executor(request, currentDir);
