@@ -9,8 +9,6 @@ pair<StatusCodes, string> Executor::Command(FTPCommandList code, string argument
     }
     case FTPCommandList::ABOR:
         break;
-    case FTPCommandList::CDUP:
-        break;
     case FTPCommandList::DELE: {
         string base = this->currentPath + '/' + argument;
         this->exec("rm -R \"" + base + "\"");
@@ -19,23 +17,14 @@ pair<StatusCodes, string> Executor::Command(FTPCommandList code, string argument
     case FTPCommandList::EPSV:
         FTPServer::InitDataServer();
         return { StatusCodes::EXTENDING_PASSIVE, "Entering Extended Passive Mode (|||" + to_string(FTPServer::dataPort) + "|)." };
-    case FTPCommandList::HELP:
-        break;
     case FTPCommandList::LIST:
         this->LIST();
         return { StatusCodes::DIRECTORY_SEND, "Directory send OK." };
-
-    case FTPCommandList::MDTM:
-        break;
     case FTPCommandList::MKD: {
         string base = this->currentPath + '/' + argument;
         this->exec("mkdir \"" + base + "\"");
         return { StatusCodes::DIR_MADE, "Directory created" };
     }
-    case FTPCommandList::NLST:
-        break;
-    case FTPCommandList::NOOP:
-        break;
     case FTPCommandList::PASS:
         if (argument.empty()) break;
         this->PASS(argument);
@@ -51,13 +40,9 @@ pair<StatusCodes, string> Executor::Command(FTPCommandList code, string argument
         }
         return { StatusCodes::ENTERING_PASSIVE, "Entering Passive Mode (127,0,0,1," + to_string(FTPServer::dataPort / 256) + "," + to_string(FTPServer::dataPort % 256) + ")." };
 
-    case FTPCommandList::PORT:
-        break;
     case FTPCommandList::PWD:
         return { StatusCodes::CURRENT_PATH, "\""+this->currentPath+"\"" };
     case FTPCommandList::QUIT:
-        break;
-    case FTPCommandList::REIN:
         break;
     case FTPCommandList::RETR:
         if (argument.empty()) {
@@ -74,8 +59,6 @@ pair<StatusCodes, string> Executor::Command(FTPCommandList code, string argument
         this->renameFrom = this->currentPath + '/' + argument;
         return { StatusCodes::RENAME_FROM, "Renaming accepted" };
     }
-    case FTPCommandList::SIZE:
-        break;
     case FTPCommandList::STOR: {
         if (!FTPServer::dataChannelInitialized) {
             throw NoDataConnection();
@@ -96,10 +79,6 @@ pair<StatusCodes, string> Executor::Command(FTPCommandList code, string argument
 
         return { StatusCodes::FILE_RECEIVE, "File receive OK." };
     }
-    case FTPCommandList::SYST:
-        break;
-    case FTPCommandList::TYPE:
-        break;
     case FTPCommandList::USER:
         this->USER(argument);
         if (this->client.IsAuthorized()) {

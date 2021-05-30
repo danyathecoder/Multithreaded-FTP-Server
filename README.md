@@ -1,5 +1,5 @@
 # Multithreaded FTP server
-Multithreaded server base on FTP protocol created for sharing
+Fork of multithreaded server based on FTP protocol
 
 ## Usage
 
@@ -7,3 +7,15 @@ Multithreaded server base on FTP protocol created for sharing
 make
 ./debug/server
 ```
+
+## Unrealsed features
+* HELP
+* CDUP
+* MDTM
+* NLST
+* NOOP
+* PORT
+* REIN
+* SIZE
+* SYST
+* TYPE 

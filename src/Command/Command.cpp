@@ -52,19 +52,6 @@ pair<FTPCommandList, string> FTPCommand::Unpack(string data) {
 }
 
 /**
- * Packing FTP command into string
- * @param code FTP code defined in StatusCodes
- * @param argument command argument
- * @return result string
- */
-string FTPCommand::Pack(StatusCodes code, const string& argument) {
-    string result = to_string((int)code);
-    result += " ";
-    result += argument;
-    return result;
-}
-
-/**
  * Get command
  * Getting stringify command
  * @param command
@@ -79,22 +66,3 @@ string FTPCommand::GetCommand(FTPCommandList command) {
     return {};
 }
 
-vector<string> FTPCommand::ArgumentParse(string arguments) {
-    vector<string> parsed;
-
-    string delimiter = " ";
-
-    size_t pos = 0;
-    string token;
-    while ((pos = arguments.find(delimiter)) != std::string::npos) {
-        token = arguments.substr(0, pos);
-        if (!token.empty())
-            parsed.push_back(token);
-        arguments.erase(0, pos + delimiter.length());
-    }
-
-    if (!arguments.empty())
-        parsed.push_back(arguments);
-
-    return parsed;
-}
